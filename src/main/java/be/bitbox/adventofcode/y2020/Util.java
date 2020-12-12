@@ -26,6 +26,5 @@ public abstract class Util {
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
