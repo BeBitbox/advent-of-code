@@ -33,7 +33,7 @@ class ExpensesAccountTest {
 
     @Test
     void processFile() {
-        var integerList = Util.readFileAsIntList("day1_part1.txt");
+        var integerList = Util.readFileAsIntList("day1.txt");
 
         assertThat(new ExpensesAccount(integerList).getOutcomeFrom2()).isEqualTo(197451);
 

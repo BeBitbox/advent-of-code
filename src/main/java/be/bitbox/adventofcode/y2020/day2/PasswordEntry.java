@@ -15,7 +15,14 @@ public class PasswordEntry {
     }
 
     public boolean isValid() {
-        return password.contains(String.valueOf(letter));
+        long occurences = password.chars()
+                .filter(current -> current == letter)
+                .count();
+        return index1 <= occurences && occurences <= index2;
+    }
+
+    public boolean isValidPart2() {
+        return password.charAt(index1 - 1) == letter ^ password.charAt(index2 - 1) == letter;
     }
 
     public int getIndex1() {
