@@ -67,11 +67,12 @@ class ForestMapTest {
 
     @Test
     void countTreesFromFile() {
-        int trees_1_1 = new ForestMap(Util.readFileAsStringList("day3.txt")).numberOfTrees(1, 1);
-        int trees_3_1 = new ForestMap(Util.readFileAsStringList("day3.txt")).numberOfTrees(3, 1);
-        int trees_5_1 = new ForestMap(Util.readFileAsStringList("day3.txt")).numberOfTrees(5, 1);
-        int trees_7_1 = new ForestMap(Util.readFileAsStringList("day3.txt")).numberOfTrees(7, 1);
-        int trees_1_2 = new ForestMap(Util.readFileAsStringList("day3.txt")).numberOfTrees(1, 2);
+        var forestMap = new ForestMap(Util.readFileAsStringList("day3.txt"));
+        int trees_1_1 = forestMap.numberOfTrees(1, 1);
+        int trees_3_1 = forestMap.numberOfTrees(3, 1);
+        int trees_5_1 = forestMap.numberOfTrees(5, 1);
+        int trees_7_1 = forestMap.numberOfTrees(7, 1);
+        int trees_1_2 = forestMap.numberOfTrees(1, 2);
 
         assertThat(trees_3_1).isEqualTo(262);
         assertThat((long) trees_1_1 * trees_3_1 * trees_5_1 * trees_7_1 * trees_1_2).isEqualTo(2698900776L);
