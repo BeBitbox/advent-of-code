@@ -17,6 +17,14 @@ class UtilTest {
     }
 
     @Test
+    void testReadingLongList() {
+        List<Long> integers = Util.readFileAsLongList("day9.txt");
+        assertThat(integers).hasSize(1000);
+        assertThat(integers.get(0)).isEqualTo(36);
+        assertThat(integers.get(999)).isEqualTo(110229764357255L);
+    }
+
+    @Test
     void testReadingStringList() {
         List<String> stringList = Util.readFileAsStringList("day2.txt");
         assertThat(stringList).hasSize(1000);

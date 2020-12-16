@@ -18,6 +18,10 @@ public abstract class Util {
         return readFileAsList(filename, Function.identity());
     }
 
+    public static List<Long> readFileAsLongList(String filename) {
+        return readFileAsList(filename, Long::parseLong);
+    }
+
     private static <T> List<T> readFileAsList(String filename, Function<String, T> function) {
         try {
             return Files.lines(Path.of(Util.class.getClassLoader().getResource(filename).toURI()))
