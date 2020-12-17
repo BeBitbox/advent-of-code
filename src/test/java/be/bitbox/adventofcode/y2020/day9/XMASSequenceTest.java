@@ -14,6 +14,7 @@ class XMASSequenceTest {
         var xmasSequence = new XMASSequence(List.of(1L, 2L, 3L, 4L, 5L, 400L));
 
         assertThat(xmasSequence.firstNumberToBreak(5)).isEqualTo(400L);
+        assertThat(xmasSequence.encryptionWeakness(5)).isEqualTo(-1L);
     }
 
     @Test
@@ -21,6 +22,7 @@ class XMASSequenceTest {
         var xmasSequence = new XMASSequence(List.of(1L, 2L, 3L, 4L, 5L, 9L, 5L, 7L, 8L, 13L));
 
         assertThat(xmasSequence.firstNumberToBreak(5)).isEqualTo(8L);
+        assertThat(xmasSequence.encryptionWeakness(5)).isEqualTo(-1L);
     }
 
     @Test
@@ -49,6 +51,7 @@ class XMASSequenceTest {
         ));
 
         assertThat(xmasSquence.firstNumberToBreak(5)).isEqualTo(127);
+        assertThat(xmasSquence.encryptionWeakness(5)).isEqualTo(62);
     }
 
     @Test
@@ -57,6 +60,8 @@ class XMASSequenceTest {
 
         assertThat(xmasSequence.firstNumberToBreak(5)).isEqualTo(28L);
         assertThat(xmasSequence.firstNumberToBreak(25)).isEqualTo(248131121L);
+        assertThat(xmasSequence.encryptionWeakness(5)).isEqualTo(-1L);
+        assertThat(xmasSequence.encryptionWeakness(25)).isEqualTo(31580383L);
     }
 
 }
