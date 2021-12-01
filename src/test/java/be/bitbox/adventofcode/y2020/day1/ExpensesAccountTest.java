@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import be.bitbox.adventofcode.y2020.Util;
+import be.bitbox.adventofcode.Util;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ExpensesAccountTest {

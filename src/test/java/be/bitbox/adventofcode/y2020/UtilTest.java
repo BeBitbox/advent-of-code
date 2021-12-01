@@ -1,5 +1,6 @@
 package be.bitbox.adventofcode.y2020;
 
+import be.bitbox.adventofcode.Util;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

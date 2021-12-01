@@ -1,6 +1,6 @@
 package be.bitbox.adventofcode.y2020.day2;
 
-import be.bitbox.adventofcode.y2020.Util;
+import be.bitbox.adventofcode.Util;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

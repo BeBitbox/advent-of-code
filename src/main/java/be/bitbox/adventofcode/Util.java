@@ -1,4 +1,4 @@
-package be.bitbox.adventofcode.y2020;
+package be.bitbox.adventofcode;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
