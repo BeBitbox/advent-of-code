@@ -31,4 +31,30 @@ public abstract class Util {
             throw new RuntimeException(e);
         }
     }
+
+    public static String printMatrix(int[][] matrix) {
+        StringBuilder logging = new StringBuilder(System.lineSeparator());
+        for (int[] ints : matrix) {
+            for (int anInt : ints) {
+                logging.append(String.format("%4d", anInt));
+            }
+            logging.append(System.lineSeparator());
+        }
+        return logging.toString();
+    }
+
+    public static String printMatrix(boolean [][] matrix) {
+        StringBuilder logging = new StringBuilder(System.lineSeparator());
+        for (boolean[] booleans : matrix) {
+            for (boolean aBoolean : booleans) {
+                if (aBoolean) {
+                    logging.append(" 1 ");
+                } else {
+                    logging.append(" 0 ");
+                }
+            }
+            logging.append(System.lineSeparator());
+        }
+        return logging.toString();
+    }
 }
