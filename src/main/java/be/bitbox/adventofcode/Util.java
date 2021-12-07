@@ -18,6 +18,10 @@ public abstract class Util {
         return readFileAsList(filename, Function.identity());
     }
 
+    public static String readFileAsString(String filename) {
+        return String.join("", readFileAsStringList(filename));
+    }
+
     public static List<Long> readFileAsLongList(String filename) {
         return readFileAsList(filename, Long::parseLong);
     }
