@@ -47,6 +47,18 @@ public abstract class Util {
         return logging.toString();
     }
 
+    public static String printMatrix(short[][] matrix) {
+        StringBuilder logging = new StringBuilder(System.lineSeparator());
+        for (short[] shorts : matrix) {
+            for (short aShort : shorts) {
+                logging.append(String.format("%2d", aShort));
+            }
+            logging.append(System.lineSeparator());
+        }
+        return logging.toString();
+    }
+
+
     public static String printMatrix(boolean [][] matrix) {
         StringBuilder logging = new StringBuilder(System.lineSeparator());
         for (boolean[] booleans : matrix) {
