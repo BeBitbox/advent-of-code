@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -67,6 +69,24 @@ public abstract class Util {
                     logging.append(" 1 ");
                 } else {
                     logging.append(" 0 ");
+                }
+            }
+            logging.append(System.lineSeparator());
+        }
+        return logging.toString();
+    }
+
+    public static String printMatrix(Collection<Tuple<Integer, Integer>> tupleList) {
+        int maxX = tupleList.stream().max(Comparator.comparingInt(tuple -> tuple.x)).orElseThrow().x;
+        int maxY = tupleList.stream().max(Comparator.comparingInt(tuple -> tuple.y)).orElseThrow().y;
+
+        StringBuilder logging = new StringBuilder(System.lineSeparator());
+        for (int i = 0; i <= maxY; i++) {
+            for (int j = 0; j <= maxX; j++) {
+                if (tupleList.contains(new Tuple<>(j, i))) {
+                    logging.append(" #");
+                } else {
+                    logging.append(" .");
                 }
             }
             logging.append(System.lineSeparator());
