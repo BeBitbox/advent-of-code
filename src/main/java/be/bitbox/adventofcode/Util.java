@@ -60,6 +60,16 @@ public abstract class Util {
         return logging.toString();
     }
 
+    public static String printMatrix(char[][] matrix) {
+        StringBuilder logging = new StringBuilder(System.lineSeparator());
+        for (char[] charArray : matrix) {
+            for (char c : charArray) {
+                logging.append(String.format("%2c", c));
+            }
+            logging.append(System.lineSeparator());
+        }
+        return logging.toString();
+    }
 
     public static String printMatrix(boolean [][] matrix) {
         StringBuilder logging = new StringBuilder(System.lineSeparator());
