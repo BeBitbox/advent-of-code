@@ -80,6 +80,6 @@ class ReactorRebootTest {
 
         reactorReboot.executeAllStep();
         assertThat(reactorReboot.numberOfCubesOn()).isEqualTo(546724L);
-        assertThat(reactorReboot.numberOfCubesOnPart2()).isEqualTo(686494570842326L);
+        assertThat(reactorReboot.numberOfCubesOnPart2()).isEqualTo(1346544039176841L);
     }
 }

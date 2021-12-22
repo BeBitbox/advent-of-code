@@ -8,11 +8,11 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class ReactorReboot {
-    private int[][][] reactor;
+    private final int[][][] reactor;
     private final List<Instruction> instructions;
     private int currentStep;
-    private Interval interval = new Interval(0, 100);
-    private List<Cuboid> cuboids = new ArrayList<>();
+    private final Interval interval = new Interval(0, 100);
+    private final List<Cuboid> cuboids = new ArrayList<>();
 
     public ReactorReboot(List<String> input) {
         instructions = input.stream()
@@ -31,20 +31,18 @@ public class ReactorReboot {
     public void executeStepPart2(Instruction instruction) {
         var cuboid = new Cuboid(instruction);
 
-        for (Cuboid onCuboid : cuboids) {
-            var intersect = onCuboid.intersect(cuboid);
-            if (intersect != null) {
-                if (instruction.isOn()) {
-                    cuboid.addDetached(intersect);
-                } else {
-                    onCuboid.addDetached(intersect);
-                }
-            }
-        }
+        var list = new ArrayList<Cuboid>();
 
         if (instruction.isOn()) {
-            cuboids.add(cuboid);
+            list.add(cuboid);
         }
+        for (Cuboid onCuboid : cuboids) {
+            var intersect = onCuboid.intersect(cuboid, !onCuboid.on);
+            if (intersect != null) {
+                list.add(intersect);
+            }
+        }
+        cuboids.addAll(list);
     }
 
     public void executeStep() {
