@@ -1,0 +1,46 @@
+jio a, +16  // 1 # 0
+inc a
+inc a
+tpl a
+tpl a
+tpl a
+inc a
+inc a
+tpl a
+inc a
+inc a
+tpl a
+tpl a
+tpl a
+inc a
+jmp +23
+tpl a       // 3 # 0
+inc a       // 4 # 0
+inc a       // 5 # 0
+tpl a       // 15 # 0
+inc a       // 16 # 0
+inc a       // 17 # 0
+tpl a       // 51 # 0
+tpl a       // 153 # 0
+inc a       // 154 # 0
+inc a       // 155 # 0
+tpl a       // 465 # 0
+inc a       // 466 # 0
+tpl a       // 1398 # 0
+inc a       // 1399 # 0
+tpl a       // 4197 # 0
+inc a       // 4198 # 0
+inc a       // 4199 # 0
+tpl a       // 12597 # 0
+inc a       // 12598 # 0
+tpl a       // 37794 # 0
+tpl a       // 113382 # 0
+inc a       // 113383 # 0
+jio a, +8
+inc b
+jie a, +4
+tpl a
+inc a
+jmp +2
+hlf a
+jmp -7
