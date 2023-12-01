@@ -1,2 +1,8 @@
 # advent-of-code
-This Java-code contains the solutions for exercises of the year 2020: https://adventofcode.com/
+This code contains the solution for exercises of the following years:
+* 2015 in Go
+* partially 2020 in Java
+* 2021 in Java
+* 2023 in Java (WIP)
+
+https://adventofcode.com/
