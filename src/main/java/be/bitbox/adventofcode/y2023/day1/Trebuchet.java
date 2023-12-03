@@ -10,15 +10,15 @@ public class Trebuchet {
 
     private final List<String> inputList;
     private final static Map<String, String> CONVERSION_TABLE = Map.of(
-            "one", "o1e",
-            "two", "t2",
-            "three", "t3e",
-            "four", "4",
-            "five", "5e",
-            "six", "6",
-            "seven", "7n",
-            "eight", "e8t",
-            "nine", "9e"
+            "one", "one1one",
+            "two", "two2two",
+            "three", "three3three",
+            "four", "four4four",
+            "five", "five5five",
+            "six", "six6six",
+            "seven", "seven7seven",
+            "eight", "eight8eight",
+            "nine", "nine9nine"
     );
 
     public Trebuchet(List<String> input) {
