@@ -12,4 +12,8 @@ public abstract class StringUtils {
                 .boxed()
                 .toList();
     }
+
+    public static String removeDoubleSpaces(String s) {
+        return s.replaceAll(" +", " ");
+    }
 }

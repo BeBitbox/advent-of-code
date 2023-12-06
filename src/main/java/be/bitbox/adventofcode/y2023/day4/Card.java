@@ -1,5 +1,7 @@
 package be.bitbox.adventofcode.y2023.day4;
 
+import be.bitbox.adventofcode.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -11,7 +13,7 @@ public class Card {
     private final List<Integer> ownNumbers;
 
     public Card(String input) {
-        input = input.replaceAll(" +", " ");
+        input = StringUtils.removeDoubleSpaces(input);
         var splittedOnSpace = input.split(" ");
         id = Integer.parseInt(splittedOnSpace[1].split(":")[0]);
         winningNumbers = new ArrayList<>();
