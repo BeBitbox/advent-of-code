@@ -1,4 +1,4 @@
-package be.bitbox.adventofcode.y2023;
+package be.bitbox.adventofcode;
 
 public abstract class MathUtil {
 

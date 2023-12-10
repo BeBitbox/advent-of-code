@@ -1,7 +1,7 @@
 package be.bitbox.adventofcode.y2023.day8;
 
 import be.bitbox.adventofcode.Tuple;
-import be.bitbox.adventofcode.y2023.MathUtil;
+import be.bitbox.adventofcode.MathUtil;
 
 import java.util.HashMap;
 import java.util.List;

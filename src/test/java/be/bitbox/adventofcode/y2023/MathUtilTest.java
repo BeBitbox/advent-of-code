@@ -1,5 +1,6 @@
 package be.bitbox.adventofcode.y2023;
 
+import be.bitbox.adventofcode.MathUtil;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
