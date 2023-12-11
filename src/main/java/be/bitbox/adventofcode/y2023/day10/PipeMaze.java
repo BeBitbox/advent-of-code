@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class PipeMaze {
 
@@ -14,6 +13,7 @@ public class PipeMaze {
     private final int height;
     private final int width;
     private Direction startDirection;
+    private Direction lastDirection;
     private Tuple<Integer, Integer> start;
 
     public PipeMaze(List<String> stringList) {
@@ -73,6 +73,7 @@ public class PipeMaze {
             list.add(nextStop);
 
             currentChar = matrix[nextStop.x][nextStop.y];
+            lastDirection = nextDirection;
             nextDirection = nextDirection.nextDirection(currentChar);
 
             if (nextDirection == null) {
@@ -89,66 +90,32 @@ public class PipeMaze {
         }
 
         var path = path(start, startDirection);
-        Set<Tuple<Integer, Integer>> insideLoopers = new HashSet<>();
+
+        var newS = lastDirection.getCharFrom(startDirection);
+        System.out.println("new value for S: " + newS);
+
+        matrix[start.x][start.y] = newS;
+
+        Set<Tuple<Integer, Integer>> insideLoop = new HashSet<>();
 
         for (int i = 0; i < height; i++) {
             boolean inside = false;
-            var index = -1;
+
             for (int j = 0; j < width; j++) {
                 var tuple = new Tuple<>(i, j);
                 if (path.contains(tuple)) {
-                    if (index < 0) {
+                    var currentChar = matrix[tuple.x][tuple.y];
+                    if (currentChar == '|' || currentChar == 'J' || currentChar == 'L') {
                         inside = !inside;
-                        index = path.indexOf(tuple);
-                    } else {
-                        var index2 = path.indexOf(tuple);
-                        if (Math.abs(index2 - index) == 1 || Math.abs(index2 - index) == path.size() - 1) {
-                            index = index2;
-                        } else {
-                            index = index2;
-                            inside = !inside;
-                        }
                     }
-
                 } else {
-                    index = -1;
                     if (inside) {
-                        insideLoopers.add(tuple);
+                        insideLoop.add(tuple);
                     }
                 }
             }
         }
-        Set<Tuple<Integer, Integer>> verified = new HashSet<>();
-        for (Tuple<Integer, Integer> insideLooper: insideLoopers) {
-            Set<Tuple<Integer, Integer>> set = new HashSet<>();
-
-            try {
-                visit(path, set, insideLooper);
-                verified.addAll(set);
-            } catch (NotInsideLoopException ignored) {}
-        }
-
-        return verified.size();
-    }
-    
-    public void visit(List<Tuple<Integer, Integer>> boundaries, Set<Tuple<Integer, Integer>> current, Tuple<Integer, Integer> start) {
-        if (boundaries.contains(start) || current.contains(start)) {
-            return;
-        }
-
-        if (start.x < 0 || start.y < 0 || start.x > height - 1 || start.y > width - 1) {
-            throw new NotInsideLoopException();    
-        }
-
-        current.add(start);
-        visit(boundaries, current, Direction.NORTH.nextStop(start));
-        visit(boundaries, current, Direction.SOUTH.nextStop(start));
-        visit(boundaries, current, Direction.WEST.nextStop(start));
-        visit(boundaries, current, Direction.EAST.nextStop(start));
-    }
-    
-    public class NotInsideLoopException extends RuntimeException {
-        
+        return insideLoop.size();
     }
 
     public enum Direction {
@@ -157,7 +124,6 @@ public class PipeMaze {
 
         final int x;
         final int y;
-        Direction next;
 
         Direction(int x, int y) {
             this.x = x;
@@ -214,6 +180,58 @@ public class PipeMaze {
                 }
             }
             return null;
+        }
+
+        char getCharFrom(Direction next) {
+            if (this == Direction.NORTH) {
+                if (next == Direction.NORTH) {
+                    return '|';
+                }
+                if (next == Direction.EAST) {
+                    return 'F';
+                }
+                if (next == Direction.WEST) {
+                    return '7';
+                }
+                throw new IllegalStateException("");
+            }
+            if (this == Direction.SOUTH) {
+                if (next == Direction.SOUTH) {
+                    return '|';
+                }
+                if (next == Direction.EAST) {
+                    return 'L';
+                }
+                if (next == Direction.WEST) {
+                    return 'J';
+                }
+                throw new IllegalStateException("");
+            }
+            if (this == Direction.EAST) {
+                if (next == Direction.EAST) {
+                    return '-';
+                }
+                if (next == Direction.NORTH) {
+                    return 'J';
+                }
+                if (next == Direction.SOUTH) {
+                    return '7';
+                }
+                throw new IllegalStateException("");
+            }
+            if (this == Direction.WEST) {
+                if (next == Direction.WEST) {
+                    return '-';
+                }
+                if (next == Direction.NORTH) {
+                    return 'L';
+                }
+                if (next == Direction.SOUTH) {
+                    return 'F';
+                }
+                throw new IllegalStateException("");
+            }
+            throw new IllegalStateException("");
         }
     }
 
